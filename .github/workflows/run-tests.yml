@@ -21,6 +21,6 @@ jobs:
     - name: Install project dependencies
       run: npm i
     - name: Start project
-      run: npm start
+      run: npm run build --if-present
     - name: Run tests
       run: npm test
