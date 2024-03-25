@@ -9,7 +9,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout the project
       uses: actions/checkout@v3
@@ -22,3 +21,13 @@ jobs:
       run: npm i
     - name: Run tests
       run: npm test
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to production
+        uses: johnbeynon/render-deploy-action@v0.0.8
+        with:
+          service-id: ${{ secrets.SERVICE_ID }}
+          api-key: ${{ secrets.RENDER_TOKEN }}
+          wait-for-success: true
